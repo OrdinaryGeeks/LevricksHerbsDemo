@@ -1,0 +1,44 @@
+<p>checkout-personal-information works!</p>
+
+
+
+<form >
+
+  <div class="orderForm">
+    <h3 class="center_text product_admin_header">Enter your Shipping and Purchase Information</h3>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="firstName">First Name</label>
+      <input class="col-md-8" id="firstName" [(ngModel)]="firstName" required name="firstName" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="lastName">Last Name</label>
+      <input class="col-md-8" id="lastName" [(ngModel)]="lastName" required name="lastName" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="cashAppName">Cash App Name</label>
+      <input class="col-md-8" id="cashAppName" [(ngModel)]="cashAppName" required name="cashAppName" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="streetAddress">Street Address</label>
+      <input class="col-md-8" id="streetAddress" [(ngModel)]="streetAddress" required name="streetAddress" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="city">City</label>
+      <input class="col-md-8" id="city" [(ngModel)]="city" required name="city" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="state">State</label>
+      <input class="col-md-8" id="state" [(ngModel)]="state" required name="state" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="zip">Zip</label>
+      <input class="col-md-8" id="zip" [(ngModel)]="zip" required name="zip" />
+    </div>
+
+
+    <button class="button default" type="submit">Add Item</button>
+  </div>
+
+
+</form>
+

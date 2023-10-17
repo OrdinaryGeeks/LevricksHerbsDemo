@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+
+code {
+  color: #e01a76;
+}
+h4.title_modal{
+    text-align:center;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+ul.horizontal_menu li {
+  display: inline;
+  list-style-type: none;
+  
+  margin: 5px;
+  padding: 0px;
+  
+}
+.center_text {
+  text-align: center;
+ 
+}
+
+.product_admin_header{
+    margin-top:20px;
+}
+ul.shopping_cart_popover li{
+    list-style:none;
+    margin: 5px;
+}
+
+.center_block{
+   
+    display:block;
+    margin:auto;
+}
+h3.center_text{
+
+    text-align:center;
+    padding: 20px;
+}
+
+
+div.form_entry{
+
+    padding: 5px;
+
+}
+div.product_admin {
+  margin-top: 20px;
+  border: 3px solid #FA0BC8;
+}
+button.shopping_cart {
+  border: none;
+  background-color: #E30242;
+  margin: 40px;
+}
+
+button.default {
+  border: none;
+  background-color: #9203FD;
+  color: white;
+  margin: 20px;
+}
+productPage{
+
+    display:inline-block;
+}
+.responsive {
+  width: 20%;
+  height: auto;
+ 
+}
+.responsive40 {
+  width: 40%;
+  height: auto;
+
+}
+
+.responsiveFull {
+  width: 80%;
+  height: auto;
+  margin: 0%;
+}
+div.product_shopper {
+  border: 3px solid #FA0BC8;
+  margin-top: 50px;
+  text-align: center;
+}
+
+div.footer {
+  background-color: #C002E3;
+  width: 100%;
+  height: 200px;
+}
+div.blank_space{
+    padding: 200px;
+
+}

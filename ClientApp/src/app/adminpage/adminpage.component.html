@@ -1,0 +1,203 @@
+<p>
+  This is a page where you can change the content of your webpage. The way it works is you enter your information and it is loaded into a database and then the webpages load the content of their pages from the database
+</p>
+
+
+<button id="changeBioButton" (click)="toggleChangeBio()">Bio</button>
+
+
+<form *ngIf="changeBio" (ngSubmit)="changeBioInformation()">
+
+  <div class="Bio">
+    <h3 class="center_text product_admin_header">Enter/Change Information for Bio Page</h3>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="title">Title</label>
+      <input class="col-md-8" id="title" [(ngModel)]="title" required name="title" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="facebook">Facebook</label>
+      <input class="col-md-8" id="facebook" [(ngModel)]="facebook" required name="facebook" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="instagram">Instagram</label>
+      <input class="col-md-8" id="instagram" [(ngModel)]="instagram" required name="instagram" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="snapchat">SnapChat</label>
+      <input class="col-md-8" id="snapchat" [(ngModel)]="snapchat" required name="snapchat" />
+    </div>
+    <div class="col-md-8 offset-2 form_entry">
+      <label class="col-md-4" for="youtube">Youtube</label>
+      <input class="col-md-8" id="youtube" [(ngModel)]="youtube" required name="youtube" />
+    </div>
+    <button class="button default" type="submit">Update Bio Social Media</button>
+
+    <button class="button default" (click)="toggleAddBioBlurb()">New Bio Blurb</button>
+    <button class="button default" (click)="toggleListBioBlurbs()">List Bio Blurbs For Edit</button>
+  </div>
+
+
+
+
+</form>
+
+<form *ngIf="addBioBlurb" (ngSubmit)="saveBioBlurb()">
+
+  <h3 class="center_text product_admin_header">Enter Information for new Bio Blurb</h3>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="bioBlurbTitle">Title</label>
+    <input class="col-md-8" id="bioBlurbTitle" [(ngModel)]="bioBlurbTitle" required name="bioBlurbTitle" />
+  </div>
+
+  <div class="col-md-8 offset-2 form_entry center_block">
+    <div class="col-md-8">
+
+      <!--https://www.tektutorialshub.com/angular/ngmodelchange-change-event-in-angular/-->
+      <input type="radio"
+             id="bioBlurbLeft"
+             name="bioBlurbOrientation"
+             value="1"
+             [checked]="bbOrientation===1"
+             (change)="onBBOrientationSelect(1)" />Media Left
+      <input type="radio"
+             id="bioBlurbRight"
+             name="bioBlurbOrientation"
+             value="2"
+             (change)="onBBOrientationSelect(2)"
+             [checked]="bbOrientation===2" />Media Right
+      <input type="radio"
+             id="bioBlurbTop"
+             name="bioBlurbOrientation"
+             value="3"
+             (change)="onBBOrientationSelect(3)"
+             [checked]="bbOrientation===3" />Media Top
+      <input type="radio"
+             id="bioBlurbBottom"
+             name="bioBlurbOrientation"
+             (change)="onBBOrientationSelect(4)"
+             value="4"
+             [checked]="bbOrientation===4" />Media Bottom
+    </div>
+
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="bioBlurbMediaLink">Media Link</label>
+    <input class="col-md-8" id="bioBlurbMediaLink" [(ngModel)]="bioBlurbMediaLink" required name="bioBlurbMediaLink" />
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="bioBlurbHeight">Media Height</label>
+    <input class="col-md-8" id="bioBlurbHeight" [(ngModel)]="bioBlurbHeight" required name="bioBlurbHeight" />
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="bioBlurbWidth">Media Width</label>
+    <input class="col-md-8" id="bioBlurbWidth" [(ngModel)]="bioBlurbWidth" required name="bioBlurbWidth" />
+  </div>
+  <div class="col-md-8 offset-2 form_entry center_block">
+    <input type="radio"
+           id="bioBlurbImage"
+           name="bioBlurbMediaType"
+           value="1"
+           [checked]="bbMediaType===1"
+           (change)="onBBMediaTypeChange(1)" />Image
+    <input type="radio"
+           id="bioBlurbVideo"
+           name="bioBlurbMediaType"
+           value="2"
+           [checked]="bbMediaType===2"
+           (change)="onBBMediaTypeChange(2)" />Video
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="bioBlurbText">Description</label>
+    <input class="col-md-8" id="bioBlurbText" [(ngModel)]="bioBlurbText" required name="bioBlurbText" />
+  </div>
+  <button class="button default" type="submit">Save New Bio Blurb</button>
+
+ 
+</form>
+
+
+<form *ngIf="listBioBlurbs" (ngSubmit)="saveBioBlurb()">
+
+
+
+  <ul>
+    <li *ngFor="let blurb of BioBlurbs" (click)="editBioBlurb(blurb)">
+      {{blurb.Title}}
+    </li>
+
+  </ul>
+  </form>
+
+<form *ngIf="editBioBlurbs" (ngSubmit)="saveEditedBioBlurb()">
+
+  <h3 class="center_text product_admin_header">Edit Information for new Bio Blurb</h3>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="editBioBlurbTitle">Title</label>
+    <input class="col-md-8" id="editBioBlurbTitle" [(ngModel)]="editBioBlurbTitle" required name="editBioBlurbTitle" />
+  </div>
+
+  <div class="col-md-8 offset-2 form_entry center_block">
+    <div class="col-md-8">
+
+      <!--https://www.tektutorialshub.com/angular/ngmodelchange-change-event-in-angular/-->
+      <input type="radio"
+             id="editBioBlurbLeft"
+             name="editBioBlurbOrientation"
+             value="1"
+             [checked]="editBBOrientation===1"
+             (change)="oneditBBOrientationSelect(1)" />Media Left
+      <input type="radio"
+             id="editBioBlurbRight"
+             name="editBioBlurbOrientation"
+             value="2"
+             (change)="oneditBBOrientationSelect(2)"
+             [checked]="editBBOrientation===2" />Media Right
+      <input type="radio"
+             id="editBioBlurbTop"
+             name="editBioBlurbOrientation"
+             value="3"
+             (change)="oneditBBOrientationSelect(3)"
+             [checked]="editBBOrientation===3" />Media Top
+      <input type="radio"
+             id="editBioBlureditBBottom"
+             name="editBioBlurbOrientation"
+             (change)="oneditBBOrientationSelect(4)"
+             value="4"
+             [checked]="editBBOrientation===4" />Media Bottom
+    </div>
+
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="editBioBlurbMediaLink">Media Link</label>
+    <input class="col-md-8" id="editBioBlurbMediaLink" [(ngModel)]="editBioBlurbMediaLink" required name="editBioBlurbMediaLink" />
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="editBioBlurbHeight">Media Height</label>
+    <input class="col-md-8" id="editBioBlurbHeight" [(ngModel)]="editBioBlurbHeight" required name="editBioBlurbHeight" />
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="editBioBlurbWidth">Media Width</label>
+    <input class="col-md-8" id="editBioBlurbWidth" [(ngModel)]="editBioBlurbWidth" required name="editBioBlurbWidth" />
+  </div>
+  <div class="col-md-8 offset-2 form_entry center_block">
+    <input type="radio"
+           id="editBioBlurbImage"
+           name="editBioBlurbMediaType"
+           value="1"
+           [checked]="editBBMediaType===1"
+           (change)="oneditBBMediaTypeChange(1)" />Image
+    <input type="radio"
+           id="editBioBlurbVideo"
+           name="editBioBlurbMediaType"
+           value="2"
+           [checked]="editBBMediaType===2"
+           (change)="oneditBBMediaTypeChange(2)" />Video
+  </div>
+  <div class="col-md-8 offset-2 form_entry">
+    <label class="col-md-4" for="editBioBlurbText">Description</label>
+    <input class="col-md-8" id="editBioBlurbText" [(ngModel)]="editBioBlurbText" required name="editBioBlurbText" />
+  </div>
+  <button class="button default" type="submit">Save New Bio Blurb</button>
+  <button class="button default" click="cancelEditBioBlurb()">Cancel Edit Bio Blurb</button>
+
+</form>

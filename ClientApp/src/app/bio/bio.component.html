@@ -1,0 +1,16 @@
+
+
+
+<div class="col-md-12 center_text">
+  <p class="col-md-12 center_text bio-header" @enterView *ngIf="isShown">All About Lev</p>
+</div>
+
+
+<div class="col-md-12 center_text" *ngFor="let blurb of BioBlurbs">
+
+
+ 
+   <img  [src]="blurb.safeMediaLink" [height]="blurb.Height" [width]="blurb.Width" />
+  <p class="col-md-12 center_text">{{blurb.Text}} Hello</p>
+
+  </div>
